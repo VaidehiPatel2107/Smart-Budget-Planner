@@ -4,18 +4,14 @@
 #include <iomanip>
 using namespace std;
 
-// ─────────────────────────────────────────
-//  STRUCT: Holds one budget category
-// ─────────────────────────────────────────
+
 struct Category {
     string name;
     double limit;
     double spent;
 };
 
-// ─────────────────────────────────────────
-//  FUNCTION: Add a new category
-// ─────────────────────────────────────────
+
 void addCategory(vector<Category>& categories) {
     Category c;
     cout << "\nEnter category name (e.g. Food, Travel): ";
@@ -27,9 +23,7 @@ void addCategory(vector<Category>& categories) {
     cout << "Category '" << c.name << "' added with limit Rs. " << c.limit << "\n";
 }
 
-// ─────────────────────────────────────────
-//  FUNCTION: Add an expense to a category
-// ─────────────────────────────────────────
+
 void addExpense(vector<Category>& categories) {
     if (categories.empty()) {
         cout << "\nNo categories found! Please add a category first.\n";
@@ -60,20 +54,18 @@ void addExpense(vector<Category>& categories) {
 
     cout << "\nExpense added!\n";
 
-    // ── ALERTS ──
+    
     if (categories[choice - 1].spent > categories[choice - 1].limit) {
-        cout << "⚠️  WARNING: You have EXCEEDED the limit for '"
+        cout << "  WARNING: You have EXCEEDED the limit for '"
              << categories[choice - 1].name << "' by Rs. "
              << (categories[choice - 1].spent - categories[choice - 1].limit) << "!\n";
     } else if (remaining <= categories[choice - 1].limit * 0.2) {
-        cout << "⚠️  ALERT: Only Rs. " << remaining
+        cout << "  ALERT: Only Rs. " << remaining
              << " remaining in '" << categories[choice - 1].name << "'. Almost at limit!\n";
     }
 }
 
-// ─────────────────────────────────────────
-//  FUNCTION: Show full budget summary
-// ─────────────────────────────────────────
+
 void showSummary(const vector<Category>& categories) {
     if (categories.empty()) {
         cout << "\nNo categories to show.\n";
@@ -122,9 +114,7 @@ void showSummary(const vector<Category>& categories) {
     cout << "========================================\n";
 }
 
-// ─────────────────────────────────────────
-//  MAIN FUNCTION
-// ─────────────────────────────────────────
+
 int main() {
     vector<Category> categories;
     int choice;
